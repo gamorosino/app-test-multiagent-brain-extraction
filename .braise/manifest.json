@@ -1,0 +1,39 @@
+{
+  "name": "app-test-multiagent-brain-extraction",
+  "github": "gamorosino/app-test-multiagent-brain-extraction",
+  "desc": "Skull-strip a T1w volume with FSL's bet.",
+  "inputs": [
+    {
+      "name": "t1",
+      "type": "nifti",
+      "label": "T1w NIfTI",
+      "required": true
+    },
+    {
+      "name": "frac",
+      "type": "float",
+      "label": "Fractional Intensity Threshold",
+      "default": 0.5
+    },
+    {
+      "name": "robust",
+      "type": "boolean",
+      "label": "Robust Brain Center Estimation",
+      "default": false
+    },
+    {
+      "name": "bias_neck_cleanup",
+      "type": "boolean",
+      "label": "Bias Field + Neck Cleanup",
+      "default": false
+    }
+  ],
+  "outputs": [
+    {
+      "name": "brain_extracted",
+      "type": "nifti",
+      "label": "Brain Extracted Volume"
+    }
+  ],
+  "invoke": "python3 brain_extract.py --t1 {t1} --out {brain_extracted} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}"
+}
