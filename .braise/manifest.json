@@ -1,39 +1,39 @@
 {
   "name": "app-test-multiagent-brain-extraction",
   "github": "gamorosino/app-test-multiagent-brain-extraction",
-  "desc": "Skull-strip a T1w volume with FSL's bet.",
-  "inputs": [
-    {
-      "name": "t1",
-      "type": "nifti",
-      "label": "T1w NIfTI",
-      "required": true
+  "desc": "Skull-strip a T1w volume with FSL's bet",
+  "config": {
+    "t1": {
+      "type": "file",
+      "description": "Input T1w NIfTI"
     },
-    {
-      "name": "frac",
+    "frac": {
       "type": "float",
-      "label": "Fractional Intensity Threshold",
+      "description": "BET fractional intensity threshold",
       "default": 0.5
     },
-    {
-      "name": "robust",
+    "robust": {
       "type": "boolean",
-      "label": "Robust Brain Center Estimation",
+      "description": "Use BET's robust brain center estimation",
       "default": false
     },
-    {
-      "name": "bias_neck_cleanup",
+    "bias_neck_cleanup": {
       "type": "boolean",
-      "label": "Bias Field + Neck Cleanup",
+      "description": "Bias field + neck cleanup",
       "default": false
+    }
+  },
+  "inputs": [
+    {
+      "id": "t1",
+      "datatype": "t1"
     }
   ],
   "outputs": [
     {
-      "name": "brain_extracted",
-      "type": "nifti",
-      "label": "Brain Extracted Volume"
+      "id": "out",
+      "datatype": "out"
     }
   ],
-  "invoke": "python3 brain_extract.py --t1 {t1} --out {brain_extracted} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}"
+  "invoke": "python3 brain_extract.py --t1 {t1} --out {out} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}"
 }
