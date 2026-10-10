@@ -5,35 +5,34 @@
   "inputs": [
     {
       "name": "t1",
-      "type": "nifti",
+      "datatype": "neuro/nifti",
       "label": "T1w NIfTI",
       "required": true
-    },
-    {
-      "name": "frac",
-      "type": "float",
-      "label": "Fractional Intensity Threshold",
-      "default": 0.5
-    },
-    {
-      "name": "robust",
-      "type": "boolean",
-      "label": "Robust Brain Center Estimation",
-      "default": false
-    },
-    {
-      "name": "bias_neck_cleanup",
-      "type": "boolean",
-      "label": "Bias Field + Neck Cleanup",
-      "default": false
     }
   ],
   "outputs": [
     {
       "name": "brain_extracted",
-      "type": "nifti",
+      "datatype": "neuro/nifti",
       "label": "Brain Extracted Volume"
     }
   ],
+  "config": {
+    "frac": {
+      "type": "float",
+      "label": "Fractional Intensity Threshold",
+      "default": 0.5
+    },
+    "robust": {
+      "type": "boolean",
+      "label": "Robust Brain Center Estimation",
+      "default": false
+    },
+    "bias_neck_cleanup": {
+      "type": "boolean",
+      "label": "Bias Field + Neck Cleanup",
+      "default": false
+    }
+  },
   "invoke": "python3 brain_extract.py --t1 {t1} --out {brain_extracted} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}"
 }

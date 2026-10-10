@@ -1,1 +1,5 @@
-{}
+{
+  "frac": 0.5,
+  "robust": false,
+  "bias_neck_cleanup": false
+}
