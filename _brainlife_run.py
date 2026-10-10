@@ -11,7 +11,7 @@ import sys
 with open("config.json") as f:
     config = json.load(f)
 
-command = 'python3 brain_extract.py --t1 {t1} --out {out} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}'.format(**config)
+command = 'python3 brain_extract.py --t1 {t1} --out {brain_extracted} --frac {frac} --robust {robust} --bias-neck-cleanup {bias_neck_cleanup}'.format(**config)
 print(f"+ {command}")
 result = subprocess.run(shlex.split(command))
 sys.exit(result.returncode)
